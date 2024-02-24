@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5l65pcv578or"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_lq7jy"]
-[ext_resource type="PackedScene" uid="uid://2d38ytxly0t1" path="res://assets/goose2.glb" id="2_yhmih"]
+[ext_resource type="PackedScene" uid="uid://cbam0foeqt8s5" path="res://assets/enemyGoose.glb" id="2_ey2vi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwrdg"]
 
@@ -14,5 +14,18 @@ shape = SubResource("CapsuleShape3D_pwrdg")
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 1)
 
-[node name="goose2" parent="." instance=ExtResource("2_yhmih")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 2)
+
+[node name="enemyGoose" parent="." instance=ExtResource("2_ey2vi")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, -0.95471, 0)
+
+[node name="Skeleton3D" parent="enemyGoose/феодосий" index="0"]
+bones/2/rotation = Quaternion(-1.60053e-07, -7.34085e-08, 0.298484, 0.954415)
+bones/9/position = Vector3(-0.00777624, 0.238793, 0.198659)
+bones/9/rotation = Quaternion(-0.639988, 0.101309, 0.752241, -0.119522)
+bones/10/position = Vector3(-0.00777598, 0.238793, -0.201341)
+bones/10/rotation = Quaternion(-0.633765, -0.134871, 0.757491, 0.0797426)
+bones/14/rotation = Quaternion(0.719362, 0.694552, -0.00748462, -0.0077048)
+
+[editable path="enemyGoose"]
