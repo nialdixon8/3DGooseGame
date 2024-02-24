@@ -28,4 +28,9 @@ bones/10/position = Vector3(-0.00777598, 0.238793, -0.201341)
 bones/10/rotation = Quaternion(-0.633765, -0.134871, 0.757491, 0.0797426)
 bones/14/rotation = Quaternion(0.719362, 0.694552, -0.00748462, -0.0077048)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
 [editable path="enemyGoose"]

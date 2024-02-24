@@ -18,3 +18,16 @@ target_position = Vector3(0, -2, 0)
 
 [node name="goose2" parent="CharacterBody3D" instance=ExtResource("2_1rg53")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, -1, 0)
+
+[node name="attackRay" type="RayCast3D" parent="CharacterBody3D"]
+target_position = Vector3(0, 0, 1)
+
+[node name="attackRay2" type="RayCast3D" parent="CharacterBody3D"]
+target_position = Vector3(0.4, 0, 1)
+
+[node name="attackRay3" type="RayCast3D" parent="CharacterBody3D"]
+target_position = Vector3(-0.4, 0, 1)
+
+[node name="Timer" type="Timer" parent="CharacterBody3D"]
+
+[connection signal="timeout" from="CharacterBody3D/Timer" to="CharacterBody3D" method="_on_timer_timeout"]
