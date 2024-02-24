@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var rotation_direction = 0
 var velocityY = 0
 
+
 func _physics_process(delta):
 	if downRay.is_colliding():
 		platform = downRay.get_collider().get_parent()

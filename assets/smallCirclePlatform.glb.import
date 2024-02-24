@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhyr64jjn58pe"
-path="res://.godot/imported/5b1f54c539b840e6a5a377b044b5b331.glb-7de30cca57b398f4c39134d1b82356d8.scn"
+uid="uid://dj4t0t2ks4x2r"
+path="res://.godot/imported/smallCirclePlatform.glb-4cdbe700a7d7e8dd929934abc34182fb.scn"
 
 [deps]
 
-source_file="res://5b1f54c539b840e6a5a377b044b5b331.glb"
-dest_files=["res://.godot/imported/5b1f54c539b840e6a5a377b044b5b331.glb-7de30cca57b398f4c39134d1b82356d8.scn"]
+source_file="res://assets/smallCirclePlatform.glb"
+dest_files=["res://.godot/imported/smallCirclePlatform.glb-4cdbe700a7d7e8dd929934abc34182fb.scn"]
 
 [params]
 

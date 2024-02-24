@@ -1,12 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://541q511nk721"]
 
 [ext_resource type="Script" path="res://falling_platform.gd" id="1_we30s"]
+[ext_resource type="PackedScene" uid="uid://dj4t0t2ks4x2r" path="res://assets/smallCirclePlatform.glb" id="2_qerpy"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0h26e"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ak8pt"]
-size = Vector3(5, 1, 5)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y3b8v"]
+height = 0.7
+radius = 1.51332
 
 [node name="fallingPlatform" type="Node3D"]
 script = ExtResource("1_we30s")
@@ -14,19 +13,18 @@ script = ExtResource("1_we30s")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("BoxShape3D_0h26e")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04926, 0)
+shape = SubResource("CylinderShape3D_y3b8v")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_0h26e")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116354, 0)
+shape = SubResource("CylinderShape3D_y3b8v")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_ak8pt")
-skeleton = NodePath("")
+[node name="smallCirclePlatform" parent="StaticBody3D" instance=ExtResource("2_qerpy")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
