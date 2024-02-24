@@ -5,7 +5,7 @@ extends Node3D
 @onready var camera = $Camera3D
 
 var target
-var camera_rotation = Vector3(-30,0,0)
+var camera_rotation = Vector3(-30,10,0)
 var zoom = 10
 
 # Called when the node enters the scene tree for the first time.
