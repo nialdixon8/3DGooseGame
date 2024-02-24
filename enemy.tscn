@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6l1c8ucvridq"]
 
-[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_pxqgf"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_c12hw"]
 [ext_resource type="PackedScene" uid="uid://dmbm3plrojfsw" path="res://goose1 (1).glb" id="2_3d552"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u7fy8"]
@@ -8,7 +8,7 @@
 [node name="enemy" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_pxqgf")
+script = ExtResource("1_c12hw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_u7fy8")
@@ -16,4 +16,5 @@ shape = SubResource("CapsuleShape3D_u7fy8")
 [node name="goose1 (1)" parent="CharacterBody3D" instance=ExtResource("2_3d552")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, -0.866311, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
+target_position = Vector3(0, 0, 1)

@@ -24,6 +24,8 @@ func _physics_process(delta):
 			anim.stop()
 		velocity.y = JUMP_VELOCITY
 		anim.play("jumpAction")
+	if position.y < -5:
+		die()
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	# Get the input direction and handle the movement/deceleration.
@@ -52,3 +54,5 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func die():
+	position = Vector3(0,1,0)
