@@ -3,6 +3,8 @@ extends CharacterBody3D
 const SPEED = 5
 const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = 0.002
+@onready var downRay = $RayCast3D
+var platform = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -13,6 +15,8 @@ var rotation_direction = 0
 var velocityY = 0
 
 func _physics_process(delta):
+	if downRay.is_colliding():
+		platform = downRay.get_collider().get_parent()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
