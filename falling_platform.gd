@@ -3,6 +3,9 @@ extends Node3D
 var falling = false
 var gravity = 0
 @onready var timer = $Timer
+
+@export var defaultPos:Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

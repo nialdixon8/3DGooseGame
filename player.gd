@@ -113,6 +113,7 @@ func attack():
 func die():
 	pushed = false
 	position = Vector3(0,1,0)
+	get_parent().get_parent().reset()
 
 func push(direction):
 	velocity.x = 0

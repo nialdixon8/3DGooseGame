@@ -33,17 +33,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6533, 0, -15.3543)
 
 [node name="enemy" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9075, 2, 0)
+defaultPos = Vector3(-15.9, 2, 0)
+platform = NodePath("../platform2")
+
+[node name="enemy3" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9075, 2, 3)
+defaultPos = Vector3(-15.9, 2, 3)
 platform = NodePath("../platform2")
 
 [node name="enemy2" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.924, 2, -13.7177)
+defaultPos = Vector3(-13.92, 2, -13.71)
 platform = NodePath("../platform3")
 
 [node name="fallingPlatform" parent="." instance=ExtResource("6_1yd4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250754, 0, -10.3906)
+defaultPos = Vector3(-0.251, 0, -10.391)
 
 [node name="fallingPlatform2" parent="." instance=ExtResource("6_1yd4w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26538, 0, -15.1649)
+defaultPos = Vector3(-5.265, 0, -15.165)
 
 [node name="goal" parent="." instance=ExtResource("7_touhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6897, 0, -24.5673)

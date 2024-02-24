@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+@export var defaultPos:Vector3
 const SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 var rotation_direction = 0
@@ -21,13 +21,15 @@ var direction
 
 func _physics_process(delta):
 	if raycast.is_colliding() and attack:
-		timer.start()
-		attack = false
-		if anim.is_playing():
-			anim.stop()
-		anim.play("neckAttackAction")
-		direction = Vector2(player.global_position.x - global_position.x,player.global_position.z - global_position.z)
-		player.push(direction)
+		if raycast.get_collider().get_parent().name == "player":
+			timer.start()
+			attack = false
+			if anim.is_playing():
+				anim.stop()
+			anim.play("neckAttackAction")
+			direction = Vector2(player.global_position.x - global_position.x,player.global_position.z - global_position.z)
+			if not player.pushed:
+				player.push(direction)
 		
 	
 	# Add the gravity.
