@@ -38,5 +38,8 @@ platform = NodePath("../platform2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, -12)
 platform = NodePath("../platform3")
 
-[node name="Node3D" parent="." instance=ExtResource("6_1yd4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10.6864)
+[node name="fallingPlatform" parent="." instance=ExtResource("6_1yd4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98355, 0, -9.38106)
+
+[node name="fallingPlatform2" parent="." instance=ExtResource("6_1yd4w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7445, 0, -14.7143)

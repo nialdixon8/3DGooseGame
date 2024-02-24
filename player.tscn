@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hbk1l0bonreu"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ekcdj"]
-[ext_resource type="PackedScene" uid="uid://dmbm3plrojfsw" path="res://goose1 (1).glb" id="2_5iusw"]
+[ext_resource type="PackedScene" uid="uid://2d38ytxly0t1" path="res://goose2.glb" id="2_m3dd3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7tirt"]
 
@@ -13,29 +13,26 @@ script = ExtResource("1_ekcdj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_7tirt")
 
-[node name="goose1" parent="CharacterBody3D" instance=ExtResource("2_5iusw")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
-
-[node name="Skeleton3D" parent="CharacterBody3D/goose1/феодосий" index="0"]
-bones/2/rotation = Quaternion(-1.74929e-07, 3.97954e-08, 0.298484, 0.954415)
-bones/4/rotation = Quaternion(-1.61218e-08, 5.35481e-07, 0.142725, 0.989762)
-bones/5/rotation = Quaternion(2.54482e-07, -7.36267e-08, -0.142939, 0.989731)
-bones/7/rotation = Quaternion(-9.70113e-08, 4.56594e-07, -0.535955, 0.844247)
-bones/9/position = Vector3(-0.00777623, 0.238793, 0.198659)
-bones/9/rotation = Quaternion(-0.639988, 0.101309, 0.752241, -0.119522)
-bones/10/position = Vector3(-0.00777603, 0.238793, -0.201341)
-bones/10/rotation = Quaternion(-0.633765, -0.134871, 0.757491, 0.0797424)
-bones/11/position = Vector3(0.261046, 0.168557, 0.0836396)
-bones/11/rotation = Quaternion(0.719362, 0.694552, 0.00743863, 0.00775084)
-bones/13/rotation = Quaternion(7.15868e-08, 1.68907e-07, -0.700571, 0.713583)
-bones/14/position = Vector3(0.261047, 0.168557, -0.0800103)
-bones/14/rotation = Quaternion(0.719362, 0.694552, -0.00748468, -0.00770472)
-bones/17/rotation = Quaternion(-0.479142, 0.520022, 0.479142, 0.520022)
-
-[node name="Куб" parent="CharacterBody3D/goose1/феодосий/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
 target_position = Vector3(0, -2, 0)
 
-[editable path="CharacterBody3D/goose1"]
+[node name="goose2" parent="CharacterBody3D" instance=ExtResource("2_m3dd3")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="CharacterBody3D/goose2/феодосий" index="0"]
+bones/0/position = Vector3(1.16437e-10, 0.0276698, 8.32667e-16)
+bones/0/rotation = Quaternion(6.83082e-07, 1.62955e-07, -0.772861, 0.634575)
+bones/1/rotation = Quaternion(0.00160535, -0.021479, 0.12093, 0.992427)
+bones/4/rotation = Quaternion(0.0178155, 0.00156988, 0.142702, 0.989604)
+bones/9/rotation = Quaternion(-0.785814, 0.132243, 0.595604, -0.101313)
+bones/10/rotation = Quaternion(-0.461774, -0.1227, 0.87128, 0.112161)
+bones/11/position = Vector3(0.227671, 0.0921704, 0.141244)
+bones/11/rotation = Quaternion(0.849874, 0.518872, 0.0839139, 0.0380029)
+bones/12/rotation = Quaternion(0.00814239, -0.00411084, 0.0966413, 0.995278)
+bones/14/position = Vector3(0.222249, 0.364087, -0.0800105)
+bones/14/rotation = Quaternion(0.512065, 0.85888, -0.00924344, -0.00547239)
+bones/15/rotation = Quaternion(-0.0105706, 0.00191329, 0.175094, 0.984493)
+bones/17/position = Vector3(-2.32831e-10, 0.0276698, -7.63278e-17)
+bones/17/rotation = Quaternion(-0.412952, 0.573996, 0.412952, 0.573996)
+
+[editable path="CharacterBody3D/goose2"]

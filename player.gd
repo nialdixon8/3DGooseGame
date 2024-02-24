@@ -9,7 +9,7 @@ var platform = null
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var anim = $goose1/AnimationPlayer
+@onready var anim = $goose2/AnimationPlayer
 
 var rotation_direction = 0
 var velocityY = 0
@@ -34,13 +34,23 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if Input.is_action_pressed("ui_left"):
+		if velocity.y == 0:
+			anim.play("runAction")
 		velocity.x -= SPEED
 	if Input.is_action_pressed("ui_right"):
+		if velocity.y == 0:
+			anim.play("runAction")
 		velocity.x += SPEED
 	if Input.is_action_pressed("ui_up"):
+		if velocity.y == 0:
+			anim.play("runAction")
 		velocity.z -= SPEED
 	if Input.is_action_pressed("ui_down"):
+		if velocity.y == 0:
+			anim.play("runAction")
 		velocity.z += SPEED
+	if velocity == Vector3.ZERO:
+		anim.play("idleAction")
 	if Vector2(velocity.z, velocity.x).length() > 0:
 		rotation_direction = Vector2(velocity.z, velocity.x).angle()
 		
