@@ -39,22 +39,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1042, 2.19091, -22.0269)
 [node name="enemy" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9075, 6, -21)
 defaultPos = Vector3(-3.908, 6, -21)
-platform = NodePath("")
+platform = NodePath("../platform2")
 
 [node name="enemy2" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1041, 6, -39.0073)
 defaultPos = Vector3(-15.104, 6, -39.007)
-platform = NodePath("")
+platform = NodePath("../largeGrass2")
 
 [node name="enemy4" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.755, 6, -40.1821)
 defaultPos = Vector3(-11.755, 6, -40.182)
-platform = NodePath("")
+platform = NodePath("../largeGrass2")
 
 [node name="enemy3" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0924997, 6, -21.1831)
 defaultPos = Vector3(0.092, 6, -21.183)
-platform = NodePath("")
+platform = NodePath("../platform2")
 
 [node name="goal" parent="Node3D" instance=ExtResource("8_cdrtg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4204, 3.04663, -44.8924)

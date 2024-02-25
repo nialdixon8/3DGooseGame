@@ -15,7 +15,6 @@ func _process(delta):
 		get_tree().quit()
 
 func reset():
-	print(player.global_position)
 	player.global_position = Vector3(0,1,0)
 	enemy.position = enemy.defaultPos
 	enemy2.position = enemy2.defaultPos

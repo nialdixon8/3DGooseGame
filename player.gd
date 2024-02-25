@@ -61,6 +61,7 @@ func _physics_process(delta):
 		if anim.is_playing():
 			anim.stop()
 		velocity.y = JUMP_VELOCITY
+		anim.speed_scale = 1
 		anim.play("jumpAction")
 	if position.y < -5:
 		die()
@@ -72,35 +73,45 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_left"):
 			if velocity.y == 0:
 				if anim.is_playing() and anim.current_animation != "neckAttackAction":
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 				if not anim.is_playing():
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 			velocity.x -= SPEED
 		if Input.is_action_pressed("ui_right"):
 			if velocity.y == 0:
 				if anim.is_playing() and anim.current_animation != "neckAttackAction":
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 				if not anim.is_playing():
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 			velocity.x += SPEED
 		if Input.is_action_pressed("ui_up"):
 			if velocity.y == 0:
 				if anim.is_playing() and anim.current_animation != "neckAttackAction":
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 				if not anim.is_playing():
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 			velocity.z -= SPEED
 		if Input.is_action_pressed("ui_down"):
 			if velocity.y == 0:
 				if anim.is_playing() and anim.current_animation != "neckAttackAction":
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 				if not anim.is_playing():
+					anim.speed_scale = 1.4
 					anim.play("runAction")
 			velocity.z += SPEED
 		if velocity == Vector3.ZERO:
 			if anim.is_playing() and anim.current_animation != "neckAttackAction":
+				anim.speed_scale = 1
 				anim.play("idleAction")
 			if not anim.is_playing():
+				anim.speed_scale = 1
 				anim.play("idleAction")
 		if Vector2(velocity.z, velocity.x).length() > 0:
 			rotation_direction = Vector2(velocity.z, velocity.x).angle()
@@ -124,6 +135,7 @@ func attack():
 	timer.start()
 	if anim.is_playing() and not anim.current_animation == "neckAttackAction":
 		anim.stop()
+	anim.speed_scale = 1
 	anim.play("neckAttackAction")
 	if attackRay.is_colliding():
 		if attackRay.get_collider().name.contains("enemy"):
