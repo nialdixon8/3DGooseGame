@@ -77,8 +77,8 @@ func push(direction):
 	velocity.x = 0
 	velocity.z = 0
 	pushed = true
-	velocity.x += direction.x * 2
-	velocity.z += direction.z * 2
+	velocity.x += direction.x * 4
+	velocity.z += direction.z * 4
 	velocity.y = 3
 
 func _on_timer_timeout():
