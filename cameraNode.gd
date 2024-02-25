@@ -2,7 +2,7 @@ extends Node3D
 
 @export_group("Properties")
 
-@onready var camera = $Camera3D
+@onready var camera = $CameraGame
 
 var target
 var camera_rotation = Vector3(-30,10,0)
