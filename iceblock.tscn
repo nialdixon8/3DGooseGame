@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://badn5ctn3soj8"]
+
+[ext_resource type="PackedScene" uid="uid://5btum0hx2yh1" path="res://assets/iceblock.glb" id="1_spcc3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sqhud"]
+points = PackedVector3Array(1.5, 0, 0.75, 1.5, 0, -0.9, -1.5, 0, 0.75, -1.5, 0, -0.9, -1.5, 1.05, 0.473, 1.5, 1.05, 0.39)
+
+[node name="iceBlock" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_sqhud")
+
+[node name="iceblock" parent="StaticBody3D" instance=ExtResource("1_spcc3")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.175773, 0.0287514)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ya3fj6ybjxd"]
+
+[ext_resource type="Script" path="res://spikeyPlatform.gd" id="1_3ir3y"]
+[ext_resource type="PackedScene" uid="uid://ljipiijjb2pt" path="res://assets/spikeyPlatform.glb" id="1_sy33u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oh21v"]
+size = Vector3(2.49504, 0.561508, 2.45479)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6chpx"]
+size = Vector3(3.5011, 0.335354, 3.43403)
+
+[node name="spikeyPlatform" type="Node3D"]
+script = ExtResource("1_3ir3y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_oh21v")
+
+[node name="spikeyPlatform" parent="StaticBody3D" instance=ExtResource("1_sy33u")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6chpx")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq8yxalyyastx"]
+
+[ext_resource type="PackedScene" uid="uid://c833mpi00efum" path="res://assets/smallgrass.glb" id="1_bfdww"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl136"]
+size = Vector3(1.423, 0.745, 1.588)
+
+[node name="smallGrass" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.155, 0)
+shape = SubResource("BoxShape3D_pl136")
+
+[node name="smallgrass" parent="StaticBody3D" instance=ExtResource("1_bfdww")]
