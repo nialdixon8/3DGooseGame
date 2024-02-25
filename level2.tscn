@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw6rmwjsta11y"]
+[gd_scene load_steps=12 format=3 uid="uid://cw6rmwjsta11y"]
 
 [ext_resource type="Script" path="res://level2.gd" id="1_bcue6"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="1_j1vwv"]
 [ext_resource type="Script" path="res://cameraNode.gd" id="2_g8oil"]
 [ext_resource type="PackedScene" uid="uid://csjqjq6hmlm4e" path="res://largeGrass.tscn" id="3_mi5eu"]
 [ext_resource type="PackedScene" uid="uid://c2nudd4rhave" path="res://mediumGrass.tscn" id="4_558sc"]
-[ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="5_ax4kl"]
 [ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="7_fh4qx"]
+[ext_resource type="PackedScene" uid="uid://541q511nk721" path="res://falling_platform.tscn" id="7_vyygh"]
 [ext_resource type="PackedScene" uid="uid://d13mxrwk4mls3" path="res://goal.tscn" id="8_awjwd"]
+[ext_resource type="PackedScene" uid="uid://cq8yxalyyastx" path="res://smallGrass.tscn" id="9_owr3e"]
+[ext_resource type="PackedScene" uid="uid://yorer1ymbdyw" path="res://platform.tscn" id="10_aig5p"]
+[ext_resource type="PackedScene" uid="uid://c5l65pcv578or" path="res://enemy.tscn" id="11_3y0v7"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_bcue6")
@@ -28,13 +31,32 @@ transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 
 
 [node name="largeGrass" parent="." instance=ExtResource("3_mi5eu")]
 
-[node name="mediumGrass" parent="." instance=ExtResource("4_558sc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86589, 0, -12.6339)
-
-[node name="spikeyPlatform" parent="." instance=ExtResource("5_ax4kl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187119, 0, -9.88215)
-
 [node name="Node3D" parent="." instance=ExtResource("7_fh4qx")]
 
 [node name="goal" parent="." instance=ExtResource("8_awjwd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34914, 0, -15.7259)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3357, 0, -35.7237)
+
+[node name="fallingPlatform" parent="." instance=ExtResource("7_vyygh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198656, 0, -10.0009)
+defaultPos = Vector3(0.199, 0, -10.001)
+
+[node name="fallingPlatform2" parent="." instance=ExtResource("7_vyygh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54422, 0, -16.799)
+defaultPos = Vector3(-4.544, 0, -16.799)
+
+[node name="fallingPlatform3" parent="." instance=ExtResource("7_vyygh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4875, 0, -30.5679)
+defaultPos = Vector3(11.487, 0, -30.568)
+
+[node name="mediumGrass" parent="." instance=ExtResource("4_558sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69563, 0, -22.5405)
+
+[node name="smallGrass" parent="." instance=ExtResource("9_owr3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7986, 0, -30.5098)
+
+[node name="platform" parent="." instance=ExtResource("10_aig5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.585094, 0, -31.7493)
+
+[node name="enemy" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("11_3y0v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30223, -30.645)
+platform = NodePath("../platform")

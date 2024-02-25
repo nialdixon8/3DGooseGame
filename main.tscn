@@ -64,7 +64,7 @@ defaultPos = Vector3(0.092, 6, -21.183)
 platform = NodePath("../platform2")
 
 [node name="goal" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("7_touhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6292, 2.76066, -37.176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9259, 2.76066, -41.5722)
 
 [node name="largeGrass" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("8_fpjtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.492808, 0)
