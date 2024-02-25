@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3r0tbc18tnux"]
+[gd_scene load_steps=11 format=3 uid="uid://beu4s4j8dhapq"]
 
 [ext_resource type="Script" path="res://level3.gd" id="1_sbgot"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="2_anatj"]
@@ -8,33 +8,105 @@
 [ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="6_fxmp4"]
 [ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="7_aq6ue"]
 [ext_resource type="PackedScene" uid="uid://d13mxrwk4mls3" path="res://goal.tscn" id="8_cdrtg"]
+[ext_resource type="Script" path="res://stopwatch.gd" id="8_x7tyn"]
+[ext_resource type="Script" path="res://level3FinishedUI.gd" id="9_4nkfb"]
 
-[node name="Node3D" type="Node3D"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_sbgot")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.355482, 0.934683, 0, -0.934683, 0.355482, 0, 3.91741, 0.756045)
 
-[node name="player" parent="." instance=ExtResource("2_anatj")]
+[node name="player" parent="Node3D" instance=ExtResource("2_anatj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 level = 3
 
-[node name="cameraNode" type="Node3D" parent="."]
+[node name="cameraNode" type="Node3D" parent="Node3D"]
 transform = Transform3D(0.98085, -0.0558571, 0.186584, 0, 0.957993, 0.286792, -0.194765, -0.2813, 0.939647, 3.17835, 3.9898, 6.45874)
 script = ExtResource("3_fn7n6")
 
-[node name="CameraGame" type="Camera3D" parent="cameraNode"]
+[node name="CameraGame" type="Camera3D" parent="Node3D/cameraNode"]
 transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0, 0)
 
-[node name="largeGrass" parent="." instance=ExtResource("4_hwvig")]
+[node name="largeGrass" parent="Node3D" instance=ExtResource("4_hwvig")]
 
-[node name="mediumGrass" parent="." instance=ExtResource("5_0c2p7")]
+[node name="mediumGrass" parent="Node3D" instance=ExtResource("5_0c2p7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86589, 0, -4.6339)
 
-[node name="spikeyPlatform" parent="." instance=ExtResource("6_fxmp4")]
+[node name="spikeyPlatform" parent="Node3D" instance=ExtResource("6_fxmp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0227, 0, -4.37731)
 
-[node name="Node3D" parent="." instance=ExtResource("7_aq6ue")]
+[node name="Node3D" parent="Node3D" instance=ExtResource("7_aq6ue")]
 
-[node name="goal" parent="." instance=ExtResource("8_cdrtg")]
+[node name="goal" parent="Node3D" instance=ExtResource("8_cdrtg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.664, 0, -9.1124)
+
+[node name="stopwatch" type="Node" parent="."]
+script = ExtResource("8_x7tyn")
+
+[node name="level3FinishedUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 554.0
+offset_bottom = 444.0
+pivot_offset = Vector2(-812, 333)
+size_flags_horizontal = 4
+script = ExtResource("9_4nkfb")
+
+[node name="finishBox" type="Panel" parent="level3FinishedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 130.0
+offset_right = 965.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="level3FinishedUI/finishBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -64.5
+offset_right = 124.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level3FinishedUI/finishBox/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="levelLabel" type="Label" parent="level3FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 3 Finished!"
+horizontal_alignment = 1
+
+[node name="timeLabel" type="Label" parent="level3FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Time: <time>"
+horizontal_alignment = 1
+
+[node name="startOver" type="Button" parent="level3FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Over"
+
+[node name="nextLevel" type="Button" parent="level3FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1"
+
+[connection signal="pressed" from="level3FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="level3FinishedUI" method="_on_start_pressed"]
+[connection signal="pressed" from="level3FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="level3FinishedUI" method="_on_start_over_pressed"]
+[connection signal="pressed" from="level3FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="level3FinishedUI" method="_on_next_level_pressed"]
+[connection signal="pressed" from="level3FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="level3FinishedUI" method="_on_exit_pressed"]

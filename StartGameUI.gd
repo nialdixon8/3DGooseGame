@@ -17,6 +17,9 @@ func _on_start_pressed():
 	var camStart = get_tree().get_root().get_node("RootCanvas/Node3D/SubViewportContainer/SubViewport/cameraNode/CameraStart")
 	camGame.set_current(true)
 	
+	var stopwatch = get_tree().get_root().get_node("RootCanvas/stopwatch")
+	var time = stopwatch.resetTime()
+	
 	var startScreen = get_tree().get_root().get_node("RootCanvas/StartGameUI")
 	startScreen.visible = false
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw6rmwjsta11y"]
+[gd_scene load_steps=14 format=3 uid="uid://djic3dpnec77y"]
 
 [ext_resource type="Script" path="res://level2.gd" id="1_bcue6"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="1_j1vwv"]
@@ -11,52 +11,128 @@
 [ext_resource type="PackedScene" uid="uid://cq8yxalyyastx" path="res://smallGrass.tscn" id="9_owr3e"]
 [ext_resource type="PackedScene" uid="uid://yorer1ymbdyw" path="res://platform.tscn" id="10_aig5p"]
 [ext_resource type="PackedScene" uid="uid://c5l65pcv578or" path="res://enemy.tscn" id="11_3y0v7"]
+[ext_resource type="Script" path="res://stopwatch.gd" id="12_1ivi7"]
+[ext_resource type="Script" path="res://level2FinishedUI.gd" id="13_02bgl"]
 
-[node name="Node3D" type="Node3D"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_bcue6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.355482, 0.934683, 0, -0.934683, 0.355482, 0, 3.91741, 0.756045)
 
-[node name="player" parent="." instance=ExtResource("1_j1vwv")]
+[node name="player" parent="Node3D" instance=ExtResource("1_j1vwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 level = 2
 
-[node name="cameraNode" type="Node3D" parent="."]
+[node name="cameraNode" type="Node3D" parent="Node3D"]
 transform = Transform3D(0.98085, -0.0558571, 0.186584, 0, 0.957993, 0.286792, -0.194765, -0.2813, 0.939647, 3.17835, 3.9898, 6.45874)
 script = ExtResource("2_g8oil")
 
-[node name="CameraGame" type="Camera3D" parent="cameraNode"]
+[node name="CameraGame" type="Camera3D" parent="Node3D/cameraNode"]
 transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0, 0)
+current = true
 
-[node name="largeGrass" parent="." instance=ExtResource("3_mi5eu")]
+[node name="largeGrass" parent="Node3D" instance=ExtResource("3_mi5eu")]
 
-[node name="Node3D" parent="." instance=ExtResource("7_fh4qx")]
+[node name="Node3D" parent="Node3D" instance=ExtResource("7_fh4qx")]
 
-[node name="goal" parent="." instance=ExtResource("8_awjwd")]
+[node name="goal" parent="Node3D" instance=ExtResource("8_awjwd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3357, 0, -35.7237)
 
-[node name="fallingPlatform" parent="." instance=ExtResource("7_vyygh")]
+[node name="fallingPlatform" parent="Node3D" instance=ExtResource("7_vyygh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198656, 0, -10.0009)
 defaultPos = Vector3(0.199, 0, -10.001)
 
-[node name="fallingPlatform2" parent="." instance=ExtResource("7_vyygh")]
+[node name="fallingPlatform2" parent="Node3D" instance=ExtResource("7_vyygh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54422, 0, -16.799)
 defaultPos = Vector3(-4.544, 0, -16.799)
 
-[node name="fallingPlatform3" parent="." instance=ExtResource("7_vyygh")]
+[node name="fallingPlatform3" parent="Node3D" instance=ExtResource("7_vyygh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4875, 0, -30.5679)
 defaultPos = Vector3(11.487, 0, -30.568)
 
-[node name="mediumGrass" parent="." instance=ExtResource("4_558sc")]
+[node name="mediumGrass" parent="Node3D" instance=ExtResource("4_558sc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.69563, 0, -22.5405)
 
-[node name="smallGrass" parent="." instance=ExtResource("9_owr3e")]
+[node name="smallGrass" parent="Node3D" instance=ExtResource("9_owr3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7986, 0, -30.5098)
 
-[node name="platform" parent="." instance=ExtResource("10_aig5p")]
+[node name="platform" parent="Node3D" instance=ExtResource("10_aig5p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.585094, 0, -31.7493)
 
-[node name="enemy" parent="." node_paths=PackedStringArray("platform") instance=ExtResource("11_3y0v7")]
+[node name="enemy" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("11_3y0v7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30223, -30.645)
+defaultPos = Vector3(0, 2.302, -30.645)
 platform = NodePath("../platform")
+
+[node name="stopwatch" type="Node" parent="."]
+script = ExtResource("12_1ivi7")
+
+[node name="level2FinishedUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 554.0
+offset_bottom = 444.0
+pivot_offset = Vector2(-812, 333)
+size_flags_horizontal = 4
+script = ExtResource("13_02bgl")
+
+[node name="finishBox" type="Panel" parent="level2FinishedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 130.0
+offset_right = 965.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="level2FinishedUI/finishBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -64.5
+offset_right = 124.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level2FinishedUI/finishBox/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="levelLabel" type="Label" parent="level2FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 2 Finished!"
+horizontal_alignment = 1
+
+[node name="timeLabel" type="Label" parent="level2FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Time: <time>"
+horizontal_alignment = 1
+
+[node name="startOver" type="Button" parent="level2FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Over"
+
+[node name="nextLevel" type="Button" parent="level2FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[connection signal="pressed" from="level2FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="Node3D" method="_on_start_over_pressed"]
+[connection signal="pressed" from="level2FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="level2FinishedUI" method="_on_start_pressed"]
+[connection signal="pressed" from="level2FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="level2FinishedUI" method="_on_start_over_pressed"]
+[connection signal="pressed" from="level2FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="Node3D" method="_on_next_level_pressed"]
+[connection signal="pressed" from="level2FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="level2FinishedUI" method="_on_next_level_pressed"]
+[connection signal="pressed" from="level2FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="level2FinishedUI" method="_on_exit_pressed"]

@@ -7,7 +7,7 @@ var mouse_sensitivity = 0.002
 @onready var attackRay = $attackRay
 @onready var attackRay2 = $attackRay2
 @onready var attackRay3 = $attackRay3
-@onready var timer = $Timer
+@onready var timer = $cooldownTimer
 var platform = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -28,10 +28,29 @@ func _physics_process(delta):
 	if downRay.is_colliding():
 		platform = downRay.get_collider().get_parent()
 		if platform.name == "goal":
+			
+			if get_parent().level == 3:
+				var stopwatch =  get_tree().get_root().get_node("CanvasLayer/stopwatch")
+				var time = stopwatch.getTime()
+				var ui = get_tree().get_root().get_node("CanvasLayer/level3FinishedUI/")
+				ui.display(time)
+				stopwatch.resetTime()
+			
 			if get_parent().level == 2:
-				get_tree().change_scene_to_file("res://level3.tscn")
+				var stopwatch =  get_tree().get_root().get_node("CanvasLayer/stopwatch")
+				var time = stopwatch.getTime()
+				var ui = get_tree().get_root().get_node("CanvasLayer/level2FinishedUI/")
+				ui.display(time)
+				stopwatch.resetTime()
+				
 			if get_parent().level == 1:
-				get_tree().change_scene_to_file("res://level2.tscn")
+				var stopwatch =  get_tree().get_root().get_node("RootCanvas/stopwatch")
+				var time = stopwatch.getTime()
+				var ui = get_tree().get_root().get_node("RootCanvas/level1FinishedUI/")
+				ui.display(time)
+				stopwatch.resetTime()
+				# get_tree().change_scene_to_file("res://level2.tscn")
+			
 			
 	# Add the gravity.
 	if not is_on_floor():

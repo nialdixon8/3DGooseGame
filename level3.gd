@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var player = $player
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -11,4 +13,4 @@ func _process(delta):
 		get_tree().quit()
 
 func reset():
-	pass
+	player.position = Vector3(0,1,0)

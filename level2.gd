@@ -3,6 +3,8 @@ extends Node3D
 @onready var fallingPlatform = $fallingPlatform
 @onready var fallingPlatform2 = $fallingPlatform2
 @onready var fallingPlatform3 = $fallingPlatform3
+@onready var enemy = $enemy
+@onready var player = $player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +17,8 @@ func _process(delta):
 		get_tree().quit()
 
 func reset():
+	player.position = Vector3(0,1,0)
+	enemy.position = enemy.defaultPos
 	fallingPlatform.position = fallingPlatform.defaultPos
 	fallingPlatform.gravity = 0
 	fallingPlatform.falling = false
@@ -27,3 +31,4 @@ func reset():
 	fallingPlatform3.gravity = 0
 	fallingPlatform3.falling = false
 	fallingPlatform3.timer.stop()
+

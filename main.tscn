@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7cxjfoh3xme5"]
+[gd_scene load_steps=14 format=3 uid="uid://c7cxjfoh3xme5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_drvey"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="1_hf7sd"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://csjqjq6hmlm4e" path="res://largeGrass.tscn" id="8_fpjtj"]
 [ext_resource type="PackedScene" uid="uid://cq8yxalyyastx" path="res://smallGrass.tscn" id="9_6g4fn"]
 [ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="11_r52p1"]
+[ext_resource type="Script" path="res://levelFinishedUI.gd" id="12_bbebw"]
 [ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="12_v8jiu"]
 [ext_resource type="Script" path="res://StartGameUI.gd" id="13_k0qme"]
+[ext_resource type="Script" path="res://stopwatch.gd" id="15_bt8ne"]
 
 [node name="RootCanvas" type="CanvasLayer"]
 
@@ -64,7 +66,7 @@ defaultPos = Vector3(0.092, 6, -21.183)
 platform = NodePath("../platform2")
 
 [node name="goal" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("7_touhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9259, 2.76066, -41.5722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4204, 3.04663, -44.8924)
 
 [node name="largeGrass" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("8_fpjtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.492808, 0)
@@ -91,29 +93,128 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96532, 2.46427, -33.2921)
 [node name="StartGameUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 554.0
+offset_bottom = 444.0
+pivot_offset = Vector2(-812, 333)
+size_flags_horizontal = 4
 script = ExtResource("13_k0qme")
 
-[node name="MarginContainer" type="MarginContainer" parent="StartGameUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="StartBox" type="Panel" parent="StartGameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 130.0
+offset_right = 965.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StartGameUI/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="StartGameUI/StartBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -64.5
+offset_right = 124.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartGameUI/StartBox/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="start" type="Button" parent="StartGameUI/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="StartGameUI/StartBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Goose Platformer"
+horizontal_alignment = 1
+
+[node name="nickname" type="TextEdit" parent="StartGameUI/StartBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "nickname"
+
+[node name="start" type="Button" parent="StartGameUI/StartBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Start"
 
-[node name="exit" type="Button" parent="StartGameUI/MarginContainer/VBoxContainer"]
+[node name="exit" type="Button" parent="StartGameUI/StartBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
-[node name="nickname" type="TextEdit" parent="StartGameUI/MarginContainer/VBoxContainer"]
-layout_mode = 2
-placeholder_text = "nickname"
+[node name="level1FinishedUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 554.0
+offset_bottom = 444.0
+pivot_offset = Vector2(-812, 333)
+size_flags_horizontal = 4
+script = ExtResource("12_bbebw")
 
-[connection signal="pressed" from="StartGameUI/MarginContainer/VBoxContainer/start" to="StartGameUI" method="_on_start_pressed"]
-[connection signal="pressed" from="StartGameUI/MarginContainer/VBoxContainer/exit" to="StartGameUI" method="_on_exit_pressed"]
+[node name="finishBox" type="Panel" parent="level1FinishedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 130.0
+offset_right = 965.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="level1FinishedUI/finishBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -64.5
+offset_right = 124.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="level1FinishedUI/finishBox/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="levelLabel" type="Label" parent="level1FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level 1 Finished!"
+horizontal_alignment = 1
+
+[node name="timeLabel" type="Label" parent="level1FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Time: <time>"
+horizontal_alignment = 1
+
+[node name="startOver" type="Button" parent="level1FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Over"
+
+[node name="nextLevel" type="Button" parent="level1FinishedUI/finishBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="stopwatch" type="Node" parent="."]
+script = ExtResource("15_bt8ne")
+
+[connection signal="pressed" from="StartGameUI/StartBox/MarginContainer/VBoxContainer/start" to="StartGameUI" method="_on_start_pressed"]
+[connection signal="pressed" from="StartGameUI/StartBox/MarginContainer/VBoxContainer/exit" to="StartGameUI" method="_on_exit_pressed"]
+[connection signal="pressed" from="level1FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="level1FinishedUI" method="_on_start_pressed"]
+[connection signal="pressed" from="level1FinishedUI/finishBox/MarginContainer/VBoxContainer/startOver" to="level1FinishedUI" method="_on_start_over_pressed"]
+[connection signal="pressed" from="level1FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="level1FinishedUI" method="_on_next_level_pressed"]
+[connection signal="pressed" from="level1FinishedUI/finishBox/MarginContainer/VBoxContainer/nextLevel" to="level1FinishedUI" method="_on_exit_pressed"]
