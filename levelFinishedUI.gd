@@ -2,22 +2,26 @@ extends Control
 
 var time = 0
 @onready var player = get_tree().get_root().get_node("RootCanvas/Node3D/SubViewportContainer/SubViewport/player")
-
+var nickname
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("usernamegroup")
 	pass # Replace with function body.
 	
 func display(t):
 	if time == 0 and t != time:
 		time = t
+		SilentWolf.Scores.save_score(nickname, time)
+		
 	var timeLabel = get_node("finishBox/MarginContainer/VBoxContainer/timeLabel")
 	var text = "Time: %f"
 	timeLabel.text = text % time
 	
 	self.visible = true
 
-
+func set_name1(nick):
+	nickname = nick
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
