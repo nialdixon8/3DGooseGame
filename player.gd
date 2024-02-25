@@ -20,9 +20,13 @@ var attackReady = true
 var rotation_direction = 0
 var velocityY = 0
 var pushed = false
+var jumpBuffer = 0
+var jump = false
 
 
 func _physics_process(delta):
+	if jumpBuffer > 0:
+		jumpBuffer -= 1
 	if Input.is_action_just_pressed("attack") and attackReady:
 		attack()
 	
@@ -56,11 +60,24 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	
+	if is_on_floor():
+		jump = false
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and not is_on_floor():
+		jumpBuffer = 10
+	if (Input.is_action_just_pressed("ui_accept") or jumpBuffer > 0) and is_on_floor():
 		if anim.is_playing():
 			anim.stop()
+		jump = true
+		jumpBuffer = 0
+		velocity.y = JUMP_VELOCITY
+		anim.speed_scale = 1
+		anim.play("jumpAction")
+	if Input.is_action_just_pressed("ui_accept") and !is_on_floor() and abs(velocity.y) < 2 and !jump:
+		if anim.is_playing():
+			anim.stop()
+		jump = true
+		jumpBuffer = 0
 		velocity.y = JUMP_VELOCITY
 		anim.speed_scale = 1
 		anim.play("jumpAction")
