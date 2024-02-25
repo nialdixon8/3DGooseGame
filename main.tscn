@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7cxjfoh3xme5"]
+[gd_scene load_steps=13 format=3 uid="uid://c7cxjfoh3xme5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_drvey"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="1_hf7sd"]
@@ -11,15 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://cq8yxalyyastx" path="res://smallGrass.tscn" id="9_6g4fn"]
 [ext_resource type="PackedScene" uid="uid://c2nudd4rhave" path="res://mediumGrass.tscn" id="10_msldc"]
 [ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="11_r52p1"]
+[ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="12_v8jiu"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_drvey")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.355482, 0.934683, 0, -0.934683, 0.355482, 0, 3.91741, 0.756045)
-
-[node name="player" parent="." instance=ExtResource("1_hf7sd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="cameraNode" type="Node3D" parent="."]
 transform = Transform3D(0.98085, -0.0558571, 0.186584, 0, 0.957993, 0.286792, -0.194765, -0.2813, 0.939647, 3.17835, 3.9898, 6.45874)
@@ -55,9 +53,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26538, 0, -15.1649)
 defaultPos = Vector3(-5.265, 0, -15.165)
 
 [node name="goal" parent="." instance=ExtResource("7_touhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8896, 0, -30.652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0073, 0, -28.5573)
 
 [node name="largeGrass" parent="." instance=ExtResource("8_fpjtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.492808, 0)
 
 [node name="largeGrass2" parent="." instance=ExtResource("8_fpjtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3105, 0, -17.7926)
@@ -72,4 +71,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7316, 0, -16.0833)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0612, 0, -24.8811)
 
 [node name="spikeyPlatform" parent="." instance=ExtResource("11_r52p1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75388, 1.45037, -1.63544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75388, 0.72086, -1.63544)
+
+[node name="Node3D" parent="." instance=ExtResource("12_v8jiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52856, 0)
+
+[node name="player" parent="." instance=ExtResource("1_hf7sd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+level = 1

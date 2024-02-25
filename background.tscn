@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://55qf2k2e80mb"]
+
+[ext_resource type="PackedScene" uid="uid://c2nmhjwwxnq8o" path="res://assets/background.glb" id="1_qll80"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="background" parent="." instance=ExtResource("1_qll80")]
+transform = Transform3D(-7, 0, -6.11959e-07, 0, 7, 0, 6.11959e-07, 0, -7, 0, 0, -300)
+
+[node name="Plane_001" parent="background" index="2"]
+transform = Transform3D(9.44832, 0, 0.164921, 0, 9.44976, 0, -0.164921, 0, 9.44832, 0, -1.01586, 0)
+
+[editable path="background"]

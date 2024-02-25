@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3r0tbc18tnux"]
+
+[ext_resource type="Script" path="res://level3.gd" id="1_sbgot"]
+[ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="2_anatj"]
+[ext_resource type="Script" path="res://cameraNode.gd" id="3_fn7n6"]
+[ext_resource type="PackedScene" uid="uid://csjqjq6hmlm4e" path="res://largeGrass.tscn" id="4_hwvig"]
+[ext_resource type="PackedScene" uid="uid://c2nudd4rhave" path="res://mediumGrass.tscn" id="5_0c2p7"]
+[ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="6_fxmp4"]
+[ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="7_aq6ue"]
+[ext_resource type="PackedScene" uid="uid://d13mxrwk4mls3" path="res://goal.tscn" id="8_cdrtg"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_sbgot")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.355482, 0.934683, 0, -0.934683, 0.355482, 0, 3.91741, 0.756045)
+
+[node name="player" parent="." instance=ExtResource("2_anatj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+level = 3
+
+[node name="cameraNode" type="Node3D" parent="."]
+transform = Transform3D(0.98085, -0.0558571, 0.186584, 0, 0.957993, 0.286792, -0.194765, -0.2813, 0.939647, 3.17835, 3.9898, 6.45874)
+script = ExtResource("3_fn7n6")
+
+[node name="Camera3D" type="Camera3D" parent="cameraNode"]
+transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0, 0)
+
+[node name="largeGrass" parent="." instance=ExtResource("4_hwvig")]
+
+[node name="mediumGrass" parent="." instance=ExtResource("5_0c2p7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86589, 0, -4.6339)
+
+[node name="spikeyPlatform" parent="." instance=ExtResource("6_fxmp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0227, 0, -4.37731)
+
+[node name="Node3D" parent="." instance=ExtResource("7_aq6ue")]
+
+[node name="goal" parent="." instance=ExtResource("8_cdrtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.664, 0, -9.1124)

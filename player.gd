@@ -27,6 +27,12 @@ func _physics_process(delta):
 	
 	if downRay.is_colliding():
 		platform = downRay.get_collider().get_parent()
+		if platform.name == "goal":
+			if get_parent().level == 2:
+				get_tree().change_scene_to_file("res://level3.tscn")
+			if get_parent().level == 1:
+				get_tree().change_scene_to_file("res://level2.tscn")
+			
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
