@@ -1,15 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7cxjfoh3xme5"]
+[gd_scene load_steps=12 format=3 uid="uid://c7cxjfoh3xme5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_drvey"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="1_hf7sd"]
 [ext_resource type="PackedScene" uid="uid://yorer1ymbdyw" path="res://platform.tscn" id="2_34nc2"]
 [ext_resource type="Script" path="res://cameraNode.gd" id="4_rukaf"]
 [ext_resource type="PackedScene" uid="uid://c5l65pcv578or" path="res://enemy.tscn" id="5_6god5"]
-[ext_resource type="PackedScene" uid="uid://541q511nk721" path="res://falling_platform.tscn" id="6_1yd4w"]
 [ext_resource type="PackedScene" uid="uid://d13mxrwk4mls3" path="res://goal.tscn" id="7_touhi"]
 [ext_resource type="PackedScene" uid="uid://csjqjq6hmlm4e" path="res://largeGrass.tscn" id="8_fpjtj"]
 [ext_resource type="PackedScene" uid="uid://cq8yxalyyastx" path="res://smallGrass.tscn" id="9_6g4fn"]
-[ext_resource type="PackedScene" uid="uid://c2nudd4rhave" path="res://mediumGrass.tscn" id="10_msldc"]
 [ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="11_r52p1"]
 [ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="12_v8jiu"]
 [ext_resource type="Script" path="res://StartGameUI.gd" id="13_k0qme"]
@@ -24,7 +22,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SubViewport" type="SubViewport" parent="Node3D/SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.355482, 0.934683, 0, -0.934683, 0.355482, 0, 3.91741, 0.756045)
@@ -41,51 +41,39 @@ transform = Transform3D(0.914037, -0.0296705, -0.404543, -0.0680521, 0.971969, -
 current = true
 
 [node name="platform2" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("2_34nc2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1042, 0, 0.210938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1042, 2.19091, -22.0269)
 
 [node name="enemy" parent="Node3D/SubViewportContainer/SubViewport" node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9075, 2, 0)
-defaultPos = Vector3(-15.9, 2, 0)
-platform = NodePath("../platform2")
-
-[node name="enemy3" parent="Node3D/SubViewportContainer/SubViewport" node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9075, 2, 3)
-defaultPos = Vector3(-15.9, 2, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9075, 6, -21)
+defaultPos = Vector3(-3.908, 6, -21)
 platform = NodePath("../platform2")
 
 [node name="enemy2" parent="Node3D/SubViewportContainer/SubViewport" node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9591, 3, -15.9528)
-defaultPos = Vector3(-17.959, 3, -15.953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1041, 6, -39.0073)
+defaultPos = Vector3(-15.104, 6, -39.007)
 platform = NodePath("../largeGrass2")
 
-[node name="fallingPlatform" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("6_1yd4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250754, 0, -10.3906)
-defaultPos = Vector3(-0.251, 0, -10.391)
+[node name="enemy4" parent="Node3D/SubViewportContainer/SubViewport" node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.755, 6, -40.1821)
+defaultPos = Vector3(-11.755, 6, -40.182)
+platform = NodePath("../largeGrass2")
 
-[node name="fallingPlatform2" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("6_1yd4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26538, 0, -15.1649)
-defaultPos = Vector3(-5.265, 0, -15.165)
+[node name="enemy3" parent="Node3D/SubViewportContainer/SubViewport" node_paths=PackedStringArray("platform") instance=ExtResource("5_6god5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0924997, 6, -21.1831)
+defaultPos = Vector3(0.092, 6, -21.183)
+platform = NodePath("../platform2")
 
 [node name="goal" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("7_touhi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0073, 0, -28.5573)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6292, 2.76066, -37.176)
 
 [node name="largeGrass" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("8_fpjtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.492808, 0)
 
-[node name="largeGrass2" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("8_fpjtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3105, 0, -17.7926)
-
-[node name="mediumGrass" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("10_msldc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6007, 0, -9.67977)
-
-[node name="smallGrass" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("9_6g4fn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7316, 0, -16.0833)
-
-[node name="smallGrass2" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("9_6g4fn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0612, 0, -24.8811)
-
 [node name="spikeyPlatform" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("11_r52p1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75388, 0.72086, -1.63544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88045, 0.72086, -7.47739)
+
+[node name="spikeyPlatform2" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("11_r52p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231686, 1.78349, -12.3448)
 
 [node name="Background" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("12_v8jiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52856, 0)
@@ -93,6 +81,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52856, 0)
 [node name="player" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("1_hf7sd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 level = 1
+
+[node name="largeGrass2" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("8_fpjtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4527, 2.31025, -39.501)
+
+[node name="smallGrass" parent="Node3D/SubViewportContainer/SubViewport" instance=ExtResource("9_6g4fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96532, 2.46427, -33.2921)
 
 [node name="StartGameUI" type="Control" parent="."]
 layout_mode = 3

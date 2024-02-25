@@ -23,7 +23,7 @@ level = 3
 transform = Transform3D(0.98085, -0.0558571, 0.186584, 0, 0.957993, 0.286792, -0.194765, -0.2813, 0.939647, 3.17835, 3.9898, 6.45874)
 script = ExtResource("3_fn7n6")
 
-[node name="Camera3D" type="Camera3D" parent="cameraNode"]
+[node name="CameraGame" type="Camera3D" parent="cameraNode"]
 transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0, 0)
 
 [node name="largeGrass" parent="." instance=ExtResource("4_hwvig")]
