@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://yorer1ymbdyw"]
+[gd_scene load_steps=6 format=3 uid="uid://yorer1ymbdyw"]
 
 [ext_resource type="PackedScene" uid="uid://cqpkfrle5uu4c" path="res://assets/battleArena.glb" id="1_ba8u6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0rbn"]
 size = Vector3(14.6289, 1, 13.2879)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3umgb"]
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3(0, -2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kml53"]
+albedo_color = Color(1, 0.588235, 0.52549, 0.164706)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5gg0b"]
+material = SubResource("StandardMaterial3D_kml53")
+radius = 0.05
+height = 0.1
 
 [node name="platform" type="Node3D"]
 
@@ -13,3 +26,17 @@ size = Vector3(14.6289, 1, 13.2879)
 shape = SubResource("BoxShape3D_w0rbn")
 
 [node name="battleArena" parent="StaticBody3D" instance=ExtResource("1_ba8u6")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51169, 3.07768, -4.44023)
+amount = 5
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_3umgb")
+draw_pass_1 = SubResource("SphereMesh_5gg0b")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48831, 3.07768, 1.55977)
+amount = 5
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_3umgb")
+draw_pass_1 = SubResource("SphereMesh_5gg0b")

@@ -3,6 +3,8 @@ extends Node3D
 var falling = false
 var gravity = 0
 @onready var timer = $Timer
+@onready var particle = $GPUParticles3D
+@onready var particle2 = $GPUParticles3D2
 
 @export var defaultPos:Vector3
 
@@ -19,6 +21,8 @@ func _process(delta):
 
 
 func _on_area_3d_body_entered(body):
+	particle.emitting = true
+	particle2.emitting = true
 	timer.start()
 	
 

@@ -37,6 +37,7 @@ script = ExtResource("4_rukaf")
 
 [node name="CameraGame" type="Camera3D" parent="Node3D/SubViewportContainer/SubViewport/cameraNode"]
 transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0, 0)
+fov = 59.0
 
 [node name="CameraStart" type="Camera3D" parent="Node3D/SubViewportContainer/SubViewport/cameraNode"]
 transform = Transform3D(0.914037, -0.0296705, -0.404543, -0.0680521, 0.971969, -0.225046, 0.39988, 0.233231, 0.886397, 10.384, 8.6333, -28.8385)

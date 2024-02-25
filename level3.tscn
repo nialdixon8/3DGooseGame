@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://beu4s4j8dhapq"]
+[gd_scene load_steps=13 format=3 uid="uid://beu4s4j8dhapq"]
 
 [ext_resource type="Script" path="res://level3.gd" id="1_sbgot"]
 [ext_resource type="PackedScene" uid="uid://hbk1l0bonreu" path="res://player.tscn" id="2_anatj"]
 [ext_resource type="Script" path="res://cameraNode.gd" id="3_fn7n6"]
+[ext_resource type="PackedScene" uid="uid://yorer1ymbdyw" path="res://platform.tscn" id="4_24axi"]
 [ext_resource type="PackedScene" uid="uid://csjqjq6hmlm4e" path="res://largeGrass.tscn" id="4_hwvig"]
-[ext_resource type="PackedScene" uid="uid://c2nudd4rhave" path="res://mediumGrass.tscn" id="5_0c2p7"]
+[ext_resource type="PackedScene" uid="uid://c5l65pcv578or" path="res://enemy.tscn" id="5_14i33"]
 [ext_resource type="PackedScene" uid="uid://c6ya3fj6ybjxd" path="res://spikeyPlatform.tscn" id="6_fxmp4"]
 [ext_resource type="PackedScene" uid="uid://55qf2k2e80mb" path="res://background.tscn" id="7_aq6ue"]
 [ext_resource type="PackedScene" uid="uid://d13mxrwk4mls3" path="res://goal.tscn" id="8_cdrtg"]
 [ext_resource type="Script" path="res://stopwatch.gd" id="8_x7tyn"]
 [ext_resource type="Script" path="res://level3FinishedUI.gd" id="9_4nkfb"]
+[ext_resource type="PackedScene" uid="uid://cq8yxalyyastx" path="res://smallGrass.tscn" id="10_48h68"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -29,19 +31,51 @@ script = ExtResource("3_fn7n6")
 
 [node name="CameraGame" type="Camera3D" parent="Node3D/cameraNode"]
 transform = Transform3D(1, 7.45058e-09, -1.49012e-08, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0, 0)
+fov = 59.0
 
-[node name="largeGrass" parent="Node3D" instance=ExtResource("4_hwvig")]
+[node name="platform2" parent="Node3D" instance=ExtResource("4_24axi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1042, 2.19091, -22.0269)
 
-[node name="mediumGrass" parent="Node3D" instance=ExtResource("5_0c2p7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86589, 0, -4.6339)
+[node name="enemy" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9075, 6, -21)
+defaultPos = Vector3(-3.908, 6, -21)
+platform = NodePath("")
 
-[node name="spikeyPlatform" parent="Node3D" instance=ExtResource("6_fxmp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0227, 0, -4.37731)
+[node name="enemy2" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1041, 6, -39.0073)
+defaultPos = Vector3(-15.104, 6, -39.007)
+platform = NodePath("")
 
-[node name="Node3D" parent="Node3D" instance=ExtResource("7_aq6ue")]
+[node name="enemy4" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.755, 6, -40.1821)
+defaultPos = Vector3(-11.755, 6, -40.182)
+platform = NodePath("")
+
+[node name="enemy3" parent="Node3D" node_paths=PackedStringArray("platform") instance=ExtResource("5_14i33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0924997, 6, -21.1831)
+defaultPos = Vector3(0.092, 6, -21.183)
+platform = NodePath("")
 
 [node name="goal" parent="Node3D" instance=ExtResource("8_cdrtg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.664, 0, -9.1124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4204, 3.04663, -44.8924)
+
+[node name="largeGrass" parent="Node3D" instance=ExtResource("4_hwvig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.492808, 0)
+
+[node name="spikeyPlatform" parent="Node3D" instance=ExtResource("6_fxmp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88045, 0.72086, -7.47739)
+
+[node name="spikeyPlatform2" parent="Node3D" instance=ExtResource("6_fxmp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.231686, 1.78349, -12.3448)
+
+[node name="Background" parent="Node3D" instance=ExtResource("7_aq6ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52856, 0)
+
+[node name="largeGrass2" parent="Node3D" instance=ExtResource("4_hwvig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4527, 2.31025, -39.501)
+
+[node name="smallGrass" parent="Node3D" instance=ExtResource("10_48h68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96532, 2.46427, -33.2921)
 
 [node name="stopwatch" type="Node" parent="."]
 script = ExtResource("8_x7tyn")

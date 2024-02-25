@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://541q511nk721"]
+[gd_scene load_steps=9 format=3 uid="uid://541q511nk721"]
 
 [ext_resource type="Script" path="res://falling_platform.gd" id="1_we30s"]
 [ext_resource type="PackedScene" uid="uid://dj4t0t2ks4x2r" path="res://assets/smallCirclePlatform.glb" id="2_qerpy"]
@@ -6,6 +6,34 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_y3b8v"]
 height = 0.7
 radius = 1.51332
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qgs5e"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.025
+emission_ring_radius = 1.21
+emission_ring_inner_radius = 0.965
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tobi6"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.184314)
+
+[sub_resource type="SphereMesh" id="SphereMesh_t0njj"]
+material = SubResource("StandardMaterial3D_tobi6")
+radius = 0.2
+height = 0.6
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ce228"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.2
+emission_ring_inner_radius = 0.635
+
+[sub_resource type="SphereMesh" id="SphereMesh_37mf8"]
+radius = 0.05
+height = 0.1
 
 [node name="fallingPlatform" type="Node3D"]
 script = ExtResource("1_we30s")
@@ -25,6 +53,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116354, 0)
 shape = SubResource("CylinderShape3D_y3b8v")
 
 [node name="smallCirclePlatform" parent="StaticBody3D" instance=ExtResource("2_qerpy")]
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.521855, 0)
+emitting = false
+amount = 12
+one_shot = true
+speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_qgs5e")
+draw_pass_1 = SubResource("SphereMesh_t0njj")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ce228")
+draw_pass_1 = SubResource("SphereMesh_37mf8")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://hbk1l0bonreu"]
+[gd_scene load_steps=7 format=3 uid="uid://hbk1l0bonreu"]
 
 [ext_resource type="Script" path="res://playerlevel.gd" id="1_bsvyx"]
 [ext_resource type="Script" path="res://player.gd" id="1_ekcdj"]
 [ext_resource type="PackedScene" uid="uid://2d38ytxly0t1" path="res://assets/goose2.glb" id="2_1rg53"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7tirt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w7ubo"]
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.3, 0.365)
+gravity = Vector3(0, -2, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dclx3"]
+size = Vector2(0.1, 0.2)
 
 [node name="player" type="Node3D"]
 script = ExtResource("1_bsvyx")
@@ -31,5 +39,11 @@ target_position = Vector3(1, 0, 1)
 target_position = Vector3(-1, 0, 1)
 
 [node name="cooldownTimer" type="Timer" parent="CharacterBody3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.445847, 0)
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_w7ubo")
+draw_pass_1 = SubResource("PlaneMesh_dclx3")
 
 [connection signal="timeout" from="CharacterBody3D/cooldownTimer" to="CharacterBody3D" method="_on_timer_timeout"]

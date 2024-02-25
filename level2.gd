@@ -23,12 +23,18 @@ func reset():
 	fallingPlatform.gravity = 0
 	fallingPlatform.falling = false
 	fallingPlatform.timer.stop()
+	fallingPlatform.particle.emitting = false
+	fallingPlatform.particle2.emitting = false
 	fallingPlatform2.position = fallingPlatform2.defaultPos
 	fallingPlatform2.gravity = 0
 	fallingPlatform2.falling = false
 	fallingPlatform2.timer.stop()
+	fallingPlatform2.particle.emitting = false
+	fallingPlatform2.particle2.emitting = false
 	fallingPlatform3.position = fallingPlatform3.defaultPos
 	fallingPlatform3.gravity = 0
 	fallingPlatform3.falling = false
 	fallingPlatform3.timer.stop()
+	fallingPlatform3.particle.emitting = false
+	fallingPlatform3.particle2.emitting = false
 
